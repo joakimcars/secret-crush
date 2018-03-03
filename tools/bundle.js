@@ -8,5 +8,8 @@ webpack(webpackConfig).run((err, stats) => {
         return
     }
 
-    console.info(stats.toString(webpackConfig.stats))
+    console.log(stats.toString({
+        chunks: false,
+        colors: true
+    }));
 })
