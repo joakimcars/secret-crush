@@ -6,6 +6,7 @@
   "scripts": {
     "bundle": "babel-node tools/bundle.js",
     "build": "babel server --out-dir .build/server --source-maps",
+    "lint": "standard",
     "dev": "babel-watch tools/dev-server.js",
     "start": "node .build/server/index.js"
   },
@@ -33,6 +34,7 @@
     "css-loader": "^0.28.10",
     "file-loader": "^1.1.11",
     "html-webpack-plugin": "^3.0.4",
+    "standard": "^11.0.0",
     "style-loader": "^0.20.2",
     "url-loader": "^1.0.1",
     "webpack": "^3.11.0",
