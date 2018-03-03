@@ -5,8 +5,9 @@
   "main": "index.js",
   "scripts": {
     "bundle": "babel-node tools/bundle.js",
-    "build": "babel server --out-dir .build/server --source-maps",
+    "build": "npm run bundle && babel server --out-dir .build/server --source-maps",
     "lint": "standard",
+    "docker:build": "docker build --tag secret-crush .",
     "dev": "babel-watch tools/dev-server.js",
     "start": "node .build/server/index.js"
   },
