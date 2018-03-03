@@ -3,6 +3,7 @@ import { Switch, Route } from 'react-router-dom'
 import Header from './Header'
 import { HomePage } from '../home'
 import { CrushesPage } from '../crush'
+import { LoginPage } from '../login'
 
 export default () => {
   return (
@@ -12,6 +13,7 @@ export default () => {
         <Switch>
           <Route exact path='/' component={HomePage} />
           <Route path='/crushes' component={CrushesPage} />
+          <Route path='/login' component={LoginPage} />
         </Switch>
       </div>
     </React.Fragment>
