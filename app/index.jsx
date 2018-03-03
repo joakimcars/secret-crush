@@ -1,5 +1,8 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
+import 'bootstrap'
+import 'bootstrap/dist/css/bootstrap.min.css'
+import App from './components/app/app'
 
 
 function createContainer () {
@@ -8,4 +11,4 @@ function createContainer () {
   return root
 }
 
-ReactDOM.render(<h1>Hello world</h1>, createContainer())
+ReactDOM.render(<App />, createContainer())
