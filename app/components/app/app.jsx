@@ -15,6 +15,9 @@ export default () => {
                     <li className="nav-item">
                         <a className="nav-link" href="#">My crushes</a>
                     </li>
+                    <li className="nav-item">
+                        <a className="nav-link" href="#">New Crush</a>
+                    </li>
                 </ul>
             </div>
         </nav >
