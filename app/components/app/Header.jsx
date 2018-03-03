@@ -35,6 +35,7 @@ export default () => {
       <div className='collapse navbar-collapse' id='navbarText'>
         <Navbar>
           <NavLink to='/'>Home</NavLink>
+          <NavLink to='/login'>Login</NavLink>
           <NavLink to='/crushes'>Crushes</NavLink>
         </Navbar>
       </div>
