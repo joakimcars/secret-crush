@@ -1,32 +1,44 @@
 import React from 'react'
-import { Field, reduxForm } from 'redux-form'
+import { connect } from 'react-redux'
+import LoginForm from './LoginForm'
+import { login, logout } from './login-actions'
 
-const FieldInput = ({ meta, label, ...input }) => {
-  const className = [
-    'form-group',
-    meta.touched && meta.error ? 'has-error' : '',
-    meta.touched && !meta.error ? 'has-success' : '',
-    'has-feedback'
-  ].join(' ')
-
+const User = ({ user, onLogout }) => {
   return (
-    <div className={className}>
-      <label className='control-label' htmlFor={input.name}>{label}</label>
-      <input {...input} className='form-control' placeholder={label} />
-      {meta.touched && !meta.error && <span className='glyphicon glyphicon-ok form-control-feedback' />}
-      {meta.touched && meta.error && <span className='glyphicon glyphicon-remove form-control-feedback' />}
-      {meta.touched && meta.error && <span className='help-block'>{meta.error}</span>}
-    </div>
+    <React.Fragment>
+      <h1>Welcome {user.id}</h1>
+      <p>Do something</p>
+      <button className='btn btn-primary' onClick={onLogout}>Logout</button>
+    </React.Fragment>
   )
 }
 
-export default reduxForm({ form: 'login-form' })(props => {
+const LoginPage = props => {
+  function handleLogin (data) {
+    return props.login({
+      email: data.email
+    })
+  }
+
   return (
-    <div style={{ display: 'flex', justifyContent: 'space-around' }}>
-      <form>
-        <Field label='User' name='user' type='text' component={FieldInput} />
-        <Field label='Password' name='password' type='password' component={FieldInput} />
-      </form>
-    </div>
+    <React.Fragment>
+      {!props.user && <LoginForm onSubmit={handleLogin} />}
+      {props.user && <User user={props.user} onLogout={props.logout} />}
+    </React.Fragment>
   )
-})
+}
+
+function mapStateToProps (state) {
+  return {
+    user: state.user
+  }
+}
+
+function mapDispatchToProps (dispatch, ownProps) {
+  return {
+    login: info => dispatch(login(info)),
+    logout: () => dispatch(logout())
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(LoginPage)
