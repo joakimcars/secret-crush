@@ -8,7 +8,7 @@
     "build": "npm run bundle && babel server --out-dir .build/server --source-maps",
     "lint": "standard",
     "docker:build": "docker build --tag secret-crush .",
-    "dev": "babel-watch tools/dev-server.js",
+    "dev": "docker-compose up -d db db-admin && babel-watch tools/dev-server.js",
     "start": "node .build/server/index.js"
   },
   "author": "",
