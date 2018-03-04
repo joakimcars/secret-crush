@@ -14,7 +14,7 @@ Ensure npm, node and docker-compose is installed using the following commands:
 ```
 $ node -v
 v8.9.4
-$ npm -
+$ npm -v
 5.6.0
 $ docker -v
 Docker version 17.12.0-ce, build c97c6d6
