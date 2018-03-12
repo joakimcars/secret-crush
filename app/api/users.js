@@ -2,6 +2,7 @@ import fetch from 'node-fetch'
 
 export async function get (id) {
   return fetch('/api/users/' + id).then(r => {
+    
     if (r.status === 404) {
       return undefined
     }
