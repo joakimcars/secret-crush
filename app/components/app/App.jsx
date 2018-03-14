@@ -6,8 +6,9 @@ import { CrushesPage } from '../crush'
 import { LoginPage } from '../login'
 import { RegisterPage } from '../register'
 import { connect } from 'react-redux'
+import { withRouter } from 'react-router-dom'
 
-const App = ({ user }) => {
+const App =  ({user}) => {
   return (
     <React.Fragment>
       <Header />
@@ -29,5 +30,4 @@ function mapStateToProps (state) {
   }
 }
 
-export default connect(mapStateToProps)(App)
-
+export default withRouter(connect(mapStateToProps)(App))

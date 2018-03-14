@@ -27,7 +27,7 @@ const Nav = ({ children }) => {
   )
 }
 
-const Header = ({user}) => {
+const Header = (props) => {
   return (
     <Nav>
       <NavBrand>Secret Crush</NavBrand>
@@ -39,7 +39,7 @@ const Header = ({user}) => {
           <NavLink to='/'>Home</NavLink>
           <NavLink to='/login'>Login</NavLink>
           <NavLink to='/crushes'>Crushes</NavLink>
-          {!user && <NavLink to='/register'>Register</NavLink>}
+          {!props.user && <NavLink to='/register'>Register</NavLink>}
         </Navbar>
       </div>
     </Nav>
