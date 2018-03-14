@@ -1,5 +1,6 @@
 import { users as api } from '../../api'
 import * as types from '../../actions'
+import { isNullOrUndefined } from 'util';
 
 export function loggedIn (user) {
   return {
@@ -21,6 +22,7 @@ export function login ({ email }) {
     if (user) {
       dispatch(loggedIn(user))
     }
+    
   }
 }
 

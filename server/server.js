@@ -9,12 +9,25 @@ app.get('/api/users/:id', async (req, res) => {
   if (!user) {
     return res.sendStatus(404)
   }
-  res.status(200).send(user)
+  return res.status(200).send(user)
 })
 
 app.put('/api/users/:id', async (req, res) => {
-  const user = await users.put({ id: req.params.id })
-  res.send(user)
+  try {
+    const user = await users.put({ id: req.params.id })
+    return res.status(200).send(user)
+  } catch (error) {
+    res.status(500).send(error)
+  }
+})
+
+app.delete('/api/users/:id', async (req, res) => {
+  try {
+    await users.delete(req.params.id)
+    return res.status(200).send({ deleted: true })
+  } catch (error) {
+    return res.status(500).send(error)
+  }
 })
 
 export default app
