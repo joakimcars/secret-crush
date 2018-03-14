@@ -4,6 +4,7 @@ import Header from './Header'
 import { HomePage } from '../home'
 import { CrushesPage } from '../crush'
 import { LoginPage } from '../login'
+import { RegisterPage} from '../register'
 
 export default () => {
   return (
@@ -14,8 +15,10 @@ export default () => {
           <Route exact path='/' component={HomePage} />
           <Route path='/crushes' component={CrushesPage} />
           <Route path='/login' component={LoginPage} />
+          <Route path='/register' component={RegisterPage} />
         </Switch>
       </div>
     </React.Fragment>
   )
 }
+

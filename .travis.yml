@@ -1,0 +1,7 @@
+//here we shall instruct travis on wich tests to run and other stuff?
+
+//we can ask it to test it in different versons of react
+
+//we can ask it download dependencies before running the main script
+
+//then ask it to run the unit-tests

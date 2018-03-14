@@ -9,5 +9,9 @@ export default {
 
   async put (user) {
     return users.put(user)
+  },
+   
+  async delete(id) {
+    return users.delete(id)
   }
 }

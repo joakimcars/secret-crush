@@ -1,5 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import { connect } from 'react-redux'
+import * as types from '../../actions'
 
 const NavLink = ({ to, children }) => {
   return (<li className='nav-item'><Link className='nav-link' to={to}>{children}</Link></li>)
@@ -31,12 +33,13 @@ export default () => {
       <NavBrand>Secret Crush</NavBrand>
       <button className='navbar-toggler' type='button' data-toggle='collapse' data-target='#navbarText' aria-controls='navbarText' aria-expanded='false' aria-label='Toggle navigation'>
         <span className='navbar-toggler-icon' />
-      </button>
-      <div className='collapse navbar-collapse' id='navbarText'>
+        </button>
+        <div className='collapse navbar-collapse' id='navbarText'>
         <Navbar>
           <NavLink to='/'>Home</NavLink>
           <NavLink to='/login'>Login</NavLink>
           <NavLink to='/crushes'>Crushes</NavLink>
+          <NavLink to='/register'>Register</NavLink>
         </Navbar>
       </div>
     </Nav>

@@ -7,7 +7,7 @@ const User = ({ user, onLogout }) => {
   return (
     <React.Fragment>
       <h1>Welcome {user.id}</h1>
-      <p>Do something</p>
+      <p>Do something!</p>
       <button className='btn btn-primary' onClick={onLogout}>Logout</button>
     </React.Fragment>
   )

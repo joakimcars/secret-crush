@@ -15,12 +15,17 @@ export default collectionName => {
       async put ({ id, ...document }) {
         await collection.insertOne({ _id: id, ...document })
         return document
+      },
+
+      async delete (id) {
+        await collection.deleteOne({ _id: id })
       }
     }
   })
 
   return {
     get: id => o.then(o => o.get(id)),
-    put: doc => o.then(o => o.put(doc))
+    put: doc => o.then(o => o.put(doc)),
+    delete: id => o.then(o => o.delete(id))
   }
 }
