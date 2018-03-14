@@ -4,9 +4,10 @@ import Header from './Header'
 import { HomePage } from '../home'
 import { CrushesPage } from '../crush'
 import { LoginPage } from '../login'
-import { RegisterPage} from '../register'
+import { RegisterPage } from '../register'
+import { connect } from 'react-redux'
 
-export default () => {
+const App = ({ user }) => {
   return (
     <React.Fragment>
       <Header />
@@ -15,10 +16,18 @@ export default () => {
           <Route exact path='/' component={HomePage} />
           <Route path='/crushes' component={CrushesPage} />
           <Route path='/login' component={LoginPage} />
-          <Route path='/register' component={RegisterPage} />
+          {!user && <Route path='/register' component={RegisterPage} />}
         </Switch>
       </div>
     </React.Fragment>
   )
 }
+
+function mapStateToProps (state) {
+  return {
+    user: state.user
+  }
+}
+
+export default connect(mapStateToProps)(App)
 

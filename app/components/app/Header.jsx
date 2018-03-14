@@ -27,7 +27,7 @@ const Nav = ({ children }) => {
   )
 }
 
-export default () => {
+const Header = ({user}) => {
   return (
     <Nav>
       <NavBrand>Secret Crush</NavBrand>
@@ -39,9 +39,19 @@ export default () => {
           <NavLink to='/'>Home</NavLink>
           <NavLink to='/login'>Login</NavLink>
           <NavLink to='/crushes'>Crushes</NavLink>
-          <NavLink to='/register'>Register</NavLink>
+          {!user && <NavLink to='/register'>Register</NavLink>}
         </Navbar>
       </div>
     </Nav>
   )
 }
+
+
+function mapStateToProps (state) {
+  return {
+    user: state.user
+  }
+}
+
+export default connect(mapStateToProps)(Header)
+
