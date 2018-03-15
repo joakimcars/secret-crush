@@ -30,4 +30,4 @@ export async function remove (id) {
     }).catch(reason => console.error(reason))
 }
 
-export default { get, put }
+export default { get, put, remove }

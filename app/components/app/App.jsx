@@ -5,6 +5,7 @@ import { HomePage } from '../home'
 import { CrushesPage } from '../crush'
 import { LoginPage } from '../login'
 import { RegisterPage } from '../register'
+import { AccountPage } from '../account'
 import { connect } from 'react-redux'
 import { withRouter } from 'react-router-dom'
 
@@ -18,6 +19,7 @@ const App =  ({user}) => {
           <Route path='/crushes' component={CrushesPage} />
           <Route path='/login' component={LoginPage} />
           {!user && <Route path='/register' component={RegisterPage} />}
+          {user && <Route path='/account' component={AccountPage} />}
         </Switch>
       </div>
     </React.Fragment>

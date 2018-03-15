@@ -37,9 +37,10 @@ const Header = (props) => {
         <div className='collapse navbar-collapse' id='navbarText'>
         <Navbar>
           <NavLink to='/'>Home</NavLink>
-          <NavLink to='/login'>Login</NavLink>
+          {!props.user && <NavLink to='/login'>Login</NavLink>}
           <NavLink to='/crushes'>Crushes</NavLink>
           {!props.user && <NavLink to='/register'>Register</NavLink>}
+          {props.user && <NavLink to='/account'>Account</NavLink>}
         </Navbar>
       </div>
     </Nav>
