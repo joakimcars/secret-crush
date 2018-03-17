@@ -2,6 +2,7 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
 import * as types from '../../actions'
+import { logout } from '../login/login-actions'
 
 const NavLink = ({ to, children }) => {
   return (<li className='nav-item'><Link className='nav-link' to={to}>{children}</Link></li>)
@@ -28,6 +29,7 @@ const Nav = ({ children }) => {
 }
 
 const Header = (props) => {
+
   return (
     <Nav>
       <NavBrand>Secret Crush</NavBrand>
@@ -41,6 +43,7 @@ const Header = (props) => {
           <NavLink to='/crushes'>Crushes</NavLink>
           {!props.user && <NavLink to='/register'>Register</NavLink>}
           {props.user && <NavLink to='/account'>Account</NavLink>}
+          {props.user && <div onClick={props.logout}><NavLink to='/'>Logout</NavLink></div>}
         </Navbar>
       </div>
     </Nav>
@@ -54,5 +57,11 @@ function mapStateToProps (state) {
   }
 }
 
-export default connect(mapStateToProps)(Header)
+function mapDispatchToProps (dispatch) {
+  return {
+       logout: () => dispatch(logout())
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Header)
 

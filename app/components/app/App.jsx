@@ -8,8 +8,9 @@ import { RegisterPage } from '../register'
 import { AccountPage } from '../account'
 import { connect } from 'react-redux'
 import { withRouter } from 'react-router-dom'
+import { logout } from '../login/login-actions'
 
-const App =  ({user}) => {
+const App =  ({user, logout}) => {
   return (
     <React.Fragment>
       <Header />
@@ -32,4 +33,11 @@ function mapStateToProps (state) {
   }
 }
 
-export default withRouter(connect(mapStateToProps)(App))
+function mapDispatchToProps (dispatch, ownProps) {
+  return {
+       logout: () => dispatch(logout())
+  }
+}
+
+
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(App))

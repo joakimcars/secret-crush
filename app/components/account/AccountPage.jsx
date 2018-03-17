@@ -3,12 +3,14 @@ import { users as api } from '../../api'
 import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
 import * as types from '../../actions'
+import { logout } from '../login/login-actions'
 
 async function removeUser (user) {
   const userToRemove = {
     id: user
   }
   await api.remove(userToRemove.id)
+
 }
 
 const AccountPage = ({ user }) => {
