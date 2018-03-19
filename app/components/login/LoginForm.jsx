@@ -1,6 +1,14 @@
 import React from 'react'
 import { Field, reduxForm } from 'redux-form'
 
+function validate (values) {
+  const errors = {}
+  if (!values.email) {
+    errors.email = 'Please fill in your email'
+  }
+  return errors
+}
+
 const FieldInput = ({ meta, label, placeholder, input }) => {
   const className = [
     'form-group',
@@ -19,14 +27,15 @@ const FieldInput = ({ meta, label, placeholder, input }) => {
     </div>
   )
 }
+
 const LoginForm = props => {
-  const { handleSubmit } = props
+  const { handleSubmit, valid, submitting } = props
   return (
     <form onSubmit={handleSubmit}>
-      <Field label='Email' placeholder='name@domain.com' name='email' type='text' component={FieldInput} />
-      <button type='submit' className='btn btn-primary'>Log in</button>
+      <Field label='Email' placeholder='name@domain.com' name='email' type='email' component={FieldInput} />
+      <button type='submit' className='btn btn-primary' disabled={!valid || submitting}>Log in</button>
     </form>
   )
 }
 
-export default reduxForm({ form: 'loginform' })(LoginForm)
+export default reduxForm({ form: 'loginform', validate })(LoginForm)
