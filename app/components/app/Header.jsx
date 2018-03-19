@@ -1,7 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
-import * as types from '../../actions'
 import { logout } from '../login/login-actions'
 
 const NavLink = ({ to, children }) => {
