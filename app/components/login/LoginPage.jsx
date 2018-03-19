@@ -20,11 +20,16 @@ const LoginPage = props => {
     })
   }
 
+  if (!props.user) {
+    return (
+      <div style={{ display: 'flex', justifyContent: 'space-around' }}>
+        <LoginForm onSubmit={handleLogin} />
+      </div>
+    )
+  }
+
   return (
-    <React.Fragment>
-      {!props.user && <LoginForm onSubmit={handleLogin} />}
-      {props.user && <User user={props.user} onLogout={props.logout} />}
-    </React.Fragment>
+    <User user={props.user} onLogout={props.logout} />
   )
 }
 

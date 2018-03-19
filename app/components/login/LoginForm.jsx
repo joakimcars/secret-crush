@@ -22,12 +22,10 @@ const FieldInput = ({ meta, label, placeholder, input }) => {
 const LoginForm = props => {
   const { handleSubmit } = props
   return (
-    <div style={{ display: 'flex', justifyContent: 'space-around' }}>
-      <form onSubmit={handleSubmit}>
-        <Field label='Email' placeholder='name@domain.com' name='email' type='text' component={FieldInput} />
-        <button type='submit' className='btn btn-primary'>Log in</button>
-      </form>
-    </div>
+    <form onSubmit={handleSubmit}>
+      <Field label='Email' placeholder='name@domain.com' name='email' type='text' component={FieldInput} />
+      <button type='submit' className='btn btn-primary'>Log in</button>
+    </form>
   )
 }
 
