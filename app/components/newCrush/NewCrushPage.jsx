@@ -1,12 +1,18 @@
 import React from 'react'
 import { users as api } from '../../api'
 import { Link } from 'react-router-dom'
+import { connect } from 'react-redux'
+
+async function newCrush (email, user) {
+  
+  await api.insert(user,email);
+}
 
 class NewCrush extends React.Component {
 
   submitForm = (e) => {
     e.preventDefault()
-    alert(this.email.value);
+    newCrush(this.email.value, this.props.user);
   }
   
   render () {
@@ -24,4 +30,10 @@ class NewCrush extends React.Component {
   }
 }
 
-export default NewCrush;
+function mapStateToProps (state) {
+  return {
+    user: state.user
+  }
+}
+
+export default connect(mapStateToProps)(NewCrush)

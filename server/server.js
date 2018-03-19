@@ -30,4 +30,14 @@ app.delete('/api/users/:id', async (req, res) => {
   }
 })
 
+//new crush test
+app.put('/api/users/:id/_crushes/:email', async (req, res) => {
+  try {
+    const newCrush = await users.put({ id: req.params.id, email: req.params.email })
+    return res.status(200).send(newCrush)
+  } catch (error) {
+    res.status(500).send(error)
+  }
+})
+
 export default app

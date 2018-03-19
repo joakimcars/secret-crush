@@ -13,5 +13,10 @@ export default {
    
   async delete(id) {
     return users.delete(id)
+  },
+  
+  //new crush test? vad gör detta?
+  async insert (id, email) {
+    return users.insert(id, email)
   }
 }

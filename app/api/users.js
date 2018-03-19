@@ -19,6 +19,17 @@ export async function put (user) {
     }).catch(reason => console.error(reason))
 }
 
+//new crush test metod
+export async function insert (user, email) {
+  const url = '/api/users/' + user.id + '/_crushes/' + email
+  return fetch(url, { method: 'PUT' })
+    .then(r => {
+      if (r.status < 400) {
+        return r.json()
+      }
+    }).catch(reason => console.error(reason))
+}
+
 
 export async function remove (id) {
   const url = '/api/users/' + id
@@ -30,4 +41,4 @@ export async function remove (id) {
     }).catch(reason => console.error(reason))
 }
 
-export default { get, put, remove }
+export default { get, put, remove, insert }
