@@ -1,6 +1,5 @@
 import { users as api } from '../../api'
 import * as types from '../../actions'
-import { isNullOrUndefined } from 'util';
 
 export function loggedIn (user) {
   return {
@@ -22,12 +21,11 @@ export function login ({ email }) {
     if (user) {
       dispatch(loggedIn(user))
     }
-    
   }
 }
 
 export function logout () {
-  console.log("here");
+  console.log('here')
   return {
     type: types.USER_LOGGED_OUT
   }
