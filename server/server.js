@@ -4,7 +4,6 @@ import users from './users/user-store'
 const app = express()
 
 app.get('/api/users/:id', async (req, res) => {
-  console.log(req)
   const user = await users.get(req.params.id)
   if (!user) {
     return res.sendStatus(404)
