@@ -6,7 +6,6 @@ async function register (email) {
   const newUser = {
     id: email
   }
-  console.log(newUser)
   await api.put(newUser)
 }
 
