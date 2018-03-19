@@ -19,6 +19,12 @@ export default collectionName => {
 
       async delete (id) {
         await collection.deleteOne({ _id: id })
+      },
+      
+      //new crush test (vad gör detta?)
+      async insert ({ id, ...document }) {
+        await collection.insertOne({ _id: id, ...document })
+        return document
       }
     }
   })
@@ -26,6 +32,9 @@ export default collectionName => {
   return {
     get: id => o.then(o => o.get(id)),
     put: doc => o.then(o => o.put(doc)),
-    delete: id => o.then(o => o.delete(id))
+    delete: id => o.then(o => o.delete(id)),
+    
+    //new crush test
+    insert: id => o.then(o => o.insert(id)),
   }
 }
