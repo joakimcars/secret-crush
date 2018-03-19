@@ -25,7 +25,6 @@ export function login ({ email }) {
 }
 
 export function logout () {
-  console.log('here')
   return {
     type: types.USER_LOGGED_OUT
   }
