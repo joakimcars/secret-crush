@@ -29,7 +29,7 @@ app.delete('/api/users/:id', async (req, res) => {
   }
 })
 
-//new crush test
+// new crush test
 app.put('/api/users/:id/_crushes/:email', async (req, res) => {
   try {
     const newCrush = await users.put({ id: req.params.id, email: req.params.email })

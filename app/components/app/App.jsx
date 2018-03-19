@@ -1,5 +1,5 @@
 import React from 'react'
-import { Switch, Route } from 'react-router-dom'
+import { Switch, Route, withRouter } from 'react-router-dom'
 import Header from './Header'
 import { HomePage } from '../home'
 import { CrushesPage } from '../crush'
@@ -8,10 +8,9 @@ import { RegisterPage } from '../register'
 import { AccountPage } from '../account'
 import { NewCrushPage } from '../newCrush'
 import { connect } from 'react-redux'
-import { withRouter } from 'react-router-dom'
 import { logout } from '../login/login-actions'
 
-const App =  ({user, logout}) => {
+const App = ({user, logout}) => {
   return (
     <React.Fragment>
       <Header />
@@ -37,9 +36,8 @@ function mapStateToProps (state) {
 
 function mapDispatchToProps (dispatch, ownProps) {
   return {
-       logout: () => dispatch(logout())
+    logout: () => dispatch(logout())
   }
 }
-
 
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(App))

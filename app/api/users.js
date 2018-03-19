@@ -3,7 +3,7 @@ import fetch from 'node-fetch'
 export async function get (id) {
   return fetch('/api/users/' + id).then(response => {
     if (response.status === 404) {
-      return "not found";
+      return 'not found'
     }
     return response.json()
   })
@@ -19,7 +19,7 @@ export async function put (user) {
     }).catch(reason => console.error(reason))
 }
 
-//new crush test metod
+// new crush test metod
 export async function insert (user, email) {
   const url = '/api/users/' + user.id + '/_crushes/' + email
   return fetch(url, { method: 'PUT' })
@@ -29,7 +29,6 @@ export async function insert (user, email) {
       }
     }).catch(reason => console.error(reason))
 }
-
 
 export async function remove (id) {
   const url = '/api/users/' + id

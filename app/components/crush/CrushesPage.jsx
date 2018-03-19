@@ -1,12 +1,9 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
-import * as types from '../../actions'
-import CrushItem from './CrushItem'
 import Crushes from './Crushes'
 
 const CrushesPage = props => {
-
   if (!props.user) {
     return (
       <React.Fragment>

@@ -1,9 +1,5 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { NewCrushPage } from '../newCrush'
-import { RegisterPage } from '../register'
-import { LoginPage } from '../login'
-import * as types from '../../actions'
 import { Link } from 'react-router-dom'
 
 const UserLoggedIn = ({ user }) => {
@@ -22,7 +18,7 @@ const NoUserLoggedIn = ({ user }) => {
   )
 }
 
-const HomePage = props =>{
+const HomePage = props => {
   return (
     <div>
       <div className='jumbotron'>
@@ -30,8 +26,8 @@ const HomePage = props =>{
         <h3>to</h3>
         <h1>Secret Crush</h1>
         <p>Secret Crush is a simple application that allows you to connect with someone that you know but would like to get to know better. The key concept with secret crush is that they will only find out that you are intrested if they are aswell. Secret Crush is 100 % free and always will be. </p>
-        {props.user && <UserLoggedIn/>} 
-        {!props.user && <NoUserLoggedIn/>}
+        {props.user && <UserLoggedIn />}
+        {!props.user && <NoUserLoggedIn />}
       </div>
     </div>
   )
