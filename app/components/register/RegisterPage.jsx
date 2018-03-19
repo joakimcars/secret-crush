@@ -22,7 +22,7 @@ class Register extends React.Component {
             <label for='emailInput'>Email</label>
             <input id='emailInput' className='form-control' type='email' ref={node => { this.email = node }} placeholder='name@domain.com' />
           </div>
-          <button type='submit' class='btn btn-primary'>Register</button>
+          <button type='submit' className='btn btn-primary'>Register</button>
         </form>
       </div>
     )
