@@ -40,6 +40,7 @@ app.delete('/api/users/:id', async (req, res) => {
 
 app.post('/api/users/:id/crushes', async (req, res) => {
   try {
+    console.log(req.body)
     const user = await users.get(req.params.id)
     const { email, ...crush } = req.body
     if (!email) {

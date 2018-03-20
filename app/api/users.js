@@ -31,13 +31,19 @@ export async function remove (id) {
 
 export async function addCrush (userId, crush) {
   const url = `/api/users/${userId}/crushes`
-  return fetch(url, { method: 'POST' })
-    .then(response => {
-      if (response.status >= 400) {
-        throw new Error({ status: response.status, ...response.json() })
-      }
-      return response.json()
-    }).catch(reason => console.error(reason))
+  return fetch(url, {
+    method: 'POST',
+    body: JSON.stringify(crush),
+    headers: {
+      'Accept': 'application/json, text/plain, */*',
+      'Content-Type': 'application/json'
+    }
+  }).then(response => {
+    if (response.status >= 400) {
+      throw new Error({ status: response.status, ...response.json() })
+    }
+    return response.json()
+  }).catch(reason => console.error(reason.message))
 }
 
 export async function removeCrush (userId, crushId) {
@@ -48,7 +54,7 @@ export async function removeCrush (userId, crushId) {
         throw new Error({ status: response.status, ...response.json() })
       }
       return response.json()
-    }).catch(reason => console.error(reason))
+    }).catch(reason => console.error(reason.message))
 }
 
-export default { get, put, remove }
+export default { get, put, remove, addCrush, removeCrush }
