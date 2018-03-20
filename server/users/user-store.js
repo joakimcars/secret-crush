@@ -13,5 +13,9 @@ export default {
 
   async delete (id) {
     return users.delete(id)
+  },
+
+  async all () {
+    return users.all()
   }
 }

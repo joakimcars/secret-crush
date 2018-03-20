@@ -2,14 +2,10 @@ import React from 'react'
 import { users as api } from '../../api'
 import { connect } from 'react-redux'
 
-async function newCrush (email, user) {
-  await api.insert(user, email)
-}
-
 class NewCrush extends React.Component {
   submitForm (e) {
     e.preventDefault()
-    newCrush(this.email.value, this.props.user)
+    api.addCrush(this.props.user.id, { email: this.email.value })
   }
 
   render () {

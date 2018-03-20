@@ -4,10 +4,10 @@ import CrushesItem from './CrushItem'
 class Crushes extends Component {
   render () {
     let CrushesItems
-    if (this.props._crushes) {
-      CrushesItems = this.props._crushes.map(crush => {
+    if (this.props.crushes) {
+      CrushesItems = this.props.crushes.map(crush => {
         return (
-          <CrushesItem key={crush._crush_id} id={crush._crush_id} crush={crush._crush} />
+          <CrushesItem key={crush.id} id={crush.id} crush={crush} />
         )
       })
     }
@@ -25,10 +25,18 @@ class Crushes extends Component {
       <div style={containerStyle}>
         <h2>Your crushes</h2>
         <table className='table' style={tableStyle}>
-          <th>
-            Email
-          </th>
-          {CrushesItems}
+          <thead>
+            <tr>
+              <th>
+                Email
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>{CrushesItems}</td>
+            </tr>
+          </tbody>
         </table>
       </div>
     )

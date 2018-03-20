@@ -1,7 +1,7 @@
-import mongodb from 'mongodb'
+import { MongoClient } from 'mongodb'
 import config from './config'
 
-const database = mongodb(config.db.url)
+const database = MongoClient.connect(config.db.url)
   .then(client => client.db(config.db.name))
 
 export default collectionName => {
@@ -13,12 +13,18 @@ export default collectionName => {
       },
 
       async put ({ id, ...document }) {
-        await collection.insertOne({ _id: id, ...document })
-        return document
+        await collection.updateOne({ _id: id }, { $set: { ...document } }, { upsert: true })
+        return { id, ...document }
       },
 
       async delete (id) {
         await collection.deleteOne({ _id: id })
+      },
+
+      async all () {
+        const cursor = await collection.find()
+        const result = await cursor.toArray()
+        return result.map(({ _id, ...doc }) => ({ id: _id, ...doc }))
       }
     }
   })
@@ -26,6 +32,7 @@ export default collectionName => {
   return {
     get: id => o.then(o => o.get(id)),
     put: doc => o.then(o => o.put(doc)),
-    delete: id => o.then(o => o.delete(id))
+    delete: id => o.then(o => o.delete(id)),
+    all: () => o.then(o => o.all())
   }
 }
