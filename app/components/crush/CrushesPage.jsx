@@ -13,10 +13,25 @@ const CrushesPage = props => {
   }
 
   if (props.user._crushes === undefined || props.user._crushes.length < 1) {
+    const containerStyle = {
+      marginLeft: '25%'
+    }
+    const textStyle = {
+      marginTop: '4%',
+      marginLeft: '5%',
+      fontWeight: 'bold'
+    }
+
     return (
       <React.Fragment>
-        <h1>You have no crushes yet</h1>
-        <p>Get started to add some crushes and find love!</p>
+        <div className='jumbotron'>
+          <div style={containerStyle}>
+            <h1>You have no crushes yet</h1>
+            <div style={textStyle}>
+              <p>Add a <Link to='/newCrush'>New Crush</Link> to see if you have a mutual crush</p>
+            </div>
+          </div>
+        </div>
       </React.Fragment>
     )
   }
