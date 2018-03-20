@@ -33,9 +33,7 @@ class Crushes extends Component {
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <td>{CrushesItems}</td>
-            </tr>
+            {CrushesItems}
           </tbody>
         </table>
       </div>
