@@ -28,14 +28,16 @@ const FieldInput = ({ meta, label, placeholder, input }) => {
   )
 }
 
-const LoginForm = props => {
+const RegisterForm = props => {
   const { handleSubmit, valid, submitting } = props
   return (
     <form onSubmit={handleSubmit}>
-      <Field label='Email' placeholder='name@domain.com' name='email' type='email' component={FieldInput} />
-      <button type='submit' className='btn btn-primary' disabled={!valid || submitting}>Log in</button>
+      <div className='form-group'>
+        <Field label='Email' placeholder='name@domain.com' name='email' type='email' component={FieldInput} />
+        <button type='submit' className='btn btn-primary' disabled={!valid || submitting}>Register</button>
+      </div>
     </form>
   )
 }
 
-export default reduxForm({ form: 'loginform', validate })(LoginForm)
+export default reduxForm({ form: 'registerform', validate })(RegisterForm)

@@ -1,6 +1,6 @@
 import React from 'react'
 import { users as api } from '../../api'
-import { Link } from 'react-router-dom'
+import RegisterForm from './RegisterForm'
 
 async function register (email) {
   const newUser = {
@@ -9,26 +9,15 @@ async function register (email) {
   await api.put(newUser)
 }
 
-class Register extends React.Component {
-  submitForm = (e) => {
-    e.preventDefault()
-    register(this.email.value);
+const Register = props => {
+  function submitForm (newUser) {
+    register(newUser.email)
   }
-
-  render () {
-    return (
-      <div>
-        <form onSubmit={this.submitForm}>
-          <label>email</label>
-          <input type='email' ref={node => { this.email = node; }} placeholder='name@domain.com'></input>
-          <button>register</button>
-        </form>
-      </div>
-    );
-  }
+  return (
+    <div style={{ display: 'flex', justifyContent: 'space-around' }}>
+      <RegisterForm onSubmit={submitForm} />
+    </div>
+  )
 }
 
-export default Register;
-
-
-
+export default Register

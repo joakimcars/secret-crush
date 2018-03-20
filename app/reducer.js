@@ -1,7 +1,10 @@
 import * as types from './actions'
 import { reducer as form } from 'redux-form'
 
-const initialState = {}
+const initialState = {
+  user: undefined,
+  form: {}
+}
 
 function user (state = undefined, action) {
   switch (action.type) {

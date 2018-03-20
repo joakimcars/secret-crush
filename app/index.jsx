@@ -11,6 +11,7 @@ import { Provider } from 'react-redux'
 import reducer from './reducer'
 
 const store = createStore(reducer, applyMiddleware(thunk))
+// store.subscribe(() => console.log(store.getState()))
 
 function createContainer () {
   const root = document.createElement('div')

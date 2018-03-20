@@ -1,37 +1,63 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
-import * as types from '../../actions'
-import CrushItem from './CrushItem'
 import Crushes from './Crushes'
-import { isNullOrUndefined } from 'util';
 
 const CrushesPage = props => {
-  
   if (!props.user) {
+    const containerStyle = {
+      marginLeft: '25%'
+    }
+    const textStyle = {
+      marginTop: '4%',
+      marginLeft: '5%',
+      fontWeight: 'bold'
+    }
     return (
       <React.Fragment>
-        <h1><Link to='/login'>Login</Link> to see your crushes</h1>
+        <div className='jumbotron'>
+          <div style={containerStyle}>
+            <h2>you are not logged in</h2>
+            <div style={textStyle}>
+              <p><Link to='/login'>Login</Link> to see your crushes</p>
+            </div>
+          </div>
+        </div>
       </React.Fragment>
     )
   }
 
-  if(props.user._crushes==undefined||props.user._crushes<1){
+  if (props.user._crushes === undefined || props.user._crushes.length < 1) {
+    const containerStyle = {
+      marginLeft: '25%'
+    }
+    const textStyle = {
+      marginTop: '4%',
+      marginLeft: '5%',
+      fontWeight: 'bold'
+    }
+
     return (
       <React.Fragment>
-        <h1>You have no crushes yet</h1>
-        <p>Get started to add some crushes and find love!</p>
+        <div className='jumbotron'>
+          <div style={containerStyle}>
+            <h1>You have no crushes yet</h1>
+            <div style={textStyle}>
+              <p>Add a <Link to='/newCrush'>New Crush</Link> to see if you have a mutual crush</p>
+            </div>
+          </div>
+        </div>
       </React.Fragment>
     )
   }
 
-  if(props.user._crushes){
-    return(
-      <React.Fragment>
-          <Crushes _crushes={props.user._crushes} />
-        </React.Fragment>
-    )
-  }
+  return (
+    <React.Fragment>
+      <div className='jumbotron'>
+        <Crushes _crushes={props.user._crushes} />
+      </div>
+    </React.Fragment>
+  )
 }
 
 function mapStateToProps (state, action) {

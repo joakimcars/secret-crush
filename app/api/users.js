@@ -3,7 +3,7 @@ import fetch from 'node-fetch'
 export async function get (id) {
   return fetch('/api/users/' + id).then(response => {
     if (response.status === 404) {
-      return "not found";
+      return 'not found'
     }
     return response.json()
   })
@@ -19,7 +19,6 @@ export async function put (user) {
     }).catch(reason => console.error(reason))
 }
 
-
 export async function remove (id) {
   const url = '/api/users/' + id
   return fetch(url, { method: 'DELETE' })
@@ -30,4 +29,4 @@ export async function remove (id) {
     }).catch(reason => console.error(reason))
 }
 
-export default { get, put }
+export default { get, put, remove }
