@@ -27,7 +27,7 @@ const CrushesPage = props => {
     )
   }
 
-  if (props.user._crushes === undefined || props.user._crushes.length < 1) {
+  if (props.user.crushes === undefined || props.user.crushes.length < 1) {
     const containerStyle = {
       marginLeft: '25%'
     }
@@ -54,15 +54,19 @@ const CrushesPage = props => {
   return (
     <React.Fragment>
       <div className='jumbotron'>
-        <Crushes _crushes={props.user._crushes} />
+        <Crushes crushes={props.user.crushes} />
       </div>
     </React.Fragment>
   )
 }
 
 function mapStateToProps (state, action) {
+  const user = state.user || {}
+  const crushes = user ? user.crushes || {} : {}
   return {
-    user: state.user
+    user: {
+      ...user, crushes: Object.keys(user.crushes || {}).map(id => ({ id, ...crushes[id] }))
+    }
   }
 }
 

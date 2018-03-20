@@ -12,7 +12,7 @@ class CrushItem extends Component {
     return (
       <tr>
         <td>
-          {this.props.crush}
+          {JSON.stringify(this.props.crush, null, 2)}
         </td>
         <td>
           <a href='#' onClick={this.deleteCrush.bind(this, this.props.id)}>Delete</a> |
