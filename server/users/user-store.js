@@ -8,7 +8,7 @@ export default {
   },
 
   async put (user) {
-    return users.put(user)
+    return users.put({ ...user, crushes: user.crushes || {} })
   },
 
   async delete (id) {

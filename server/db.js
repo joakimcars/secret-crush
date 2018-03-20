@@ -13,7 +13,7 @@ export default collectionName => {
       },
 
       async put ({ id, ...document }) {
-        await collection.updateOne({ _id: id }, { $set: { ...document } }, { upsert: true })
+        await collection.updateOne({ _id: id }, { $set: document }, { upsert: true })
         return { id, ...document }
       },
 
