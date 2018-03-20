@@ -54,7 +54,7 @@ const CrushesPage = props => {
   return (
     <React.Fragment>
       <div className='jumbotron'>
-        <Crushes crushes={props.user.crushes} />
+        <Crushes crushes={props.user.crushes} user={props.user} />
       </div>
     </React.Fragment>
   )
