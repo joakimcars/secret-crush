@@ -11,9 +11,25 @@ class Crushes extends Component {
         )
       })
     }
+
+    const containerStyle = {
+      marginLeft: '20%',
+      marginRight: '20%'
+    }
+
+    const tableStyle = {
+      marginLeft: '4%',
+      marginTop: '5%'
+    }
     return (
-      <div>
-        {CrushesItems}
+      <div style={containerStyle}>
+        <h2>Your crushes</h2>
+        <table className='table' style={tableStyle}>
+          <th>
+            Email
+          </th>
+          {CrushesItems}
+        </table>
       </div>
     )
   }

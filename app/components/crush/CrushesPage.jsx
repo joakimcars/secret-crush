@@ -23,7 +23,9 @@ const CrushesPage = props => {
 
   return (
     <React.Fragment>
-      <Crushes _crushes={props.user._crushes} />
+      <div className='jumbotron'>
+        <Crushes _crushes={props.user._crushes} />
+      </div>
     </React.Fragment>
   )
 }

@@ -19,7 +19,14 @@ const NoUserLoggedIn = ({ user }) => {
 }
 
 const containerStyle = {
+  marginLeft: '25%',
+  marginRight: '35%'
+}
 
+const textStyle = {
+  marginTop: '4%',
+  marginLeft: '5%',
+  fontWeight: 'bold'
 }
 
 const HomePage = props => {
@@ -27,12 +34,12 @@ const HomePage = props => {
     <div>
       <div className='jumbotron' >
         <div className='presentation' style={containerStyle}>
-          <h1>Welcome</h1>
-          <h3>to</h3>
-          <h1>Secret Crush</h1>
-          <p>Secret Crush is a simple application that allows you to connect with someone that you know but would like to get to know better. The key concept with secret crush is that they will only find out that you are intrested if they are aswell. Secret Crush is 100 % free and always will be. </p>
-          {props.user && <UserLoggedIn />}
-          {!props.user && <NoUserLoggedIn />}
+          <h1>Welcome to Secret Crush</h1>
+          <div style={textStyle}>
+            <p>Secret Crush is a simple application that allows you to connect with someone that you know but would like to get to know better. The key concept with secret crush is that they will only find out that you are intrested if they are aswell. <br /><br /> Secret Crush is 100 % free and always will be. </p>
+            {props.user && <UserLoggedIn />}
+            {!props.user && <NoUserLoggedIn />}
+          </div>
         </div>
       </div>
     </div>
