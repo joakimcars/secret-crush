@@ -25,6 +25,7 @@ app.put('/api/users/:id', async (req, res) => {
     const user = await users.put({ id: req.params.id })
     return res.status(200).send(user)
   } catch (error) {
+    console.error(error)
     return res.status(500).send({ error: error.message })
   }
 })
@@ -34,6 +35,7 @@ app.delete('/api/users/:id', async (req, res) => {
     await users.delete(req.params.id)
     return res.status(200).send({ deleted: true })
   } catch (error) {
+    console.error(error)
     return res.status(500).send({ error: error.message })
   }
 })
@@ -50,6 +52,7 @@ app.post('/api/users/:id/crushes', async (req, res) => {
     const updated = await users.put({ ...user, crushes: { ...user.crushes, [email]: crush } })
     return res.status(200).send(updated)
   } catch (error) {
+    console.error(error)
     return res.status(500).send({ error: error.message })
   }
 })
@@ -61,6 +64,7 @@ app.delete('/api/users/:id/crushes/:crush', async (req, res) => {
     const updated = await users.put({ ...user, crushes })
     return res.status(200).send(updated)
   } catch (error) {
+    console.error(error)
     return res.status(500).send({ error: error.message })
   }
 })
