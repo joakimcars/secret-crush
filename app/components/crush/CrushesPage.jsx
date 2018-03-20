@@ -5,9 +5,24 @@ import Crushes from './Crushes'
 
 const CrushesPage = props => {
   if (!props.user) {
+    const containerStyle = {
+      marginLeft: '25%'
+    }
+    const textStyle = {
+      marginTop: '4%',
+      marginLeft: '5%',
+      fontWeight: 'bold'
+    }
     return (
       <React.Fragment>
-        <h1><Link to='/login'>Login</Link> to see your crushes</h1>
+        <div className='jumbotron'>
+          <div style={containerStyle}>
+            <h2>you are not logged in</h2>
+            <div style={textStyle}>
+              <p><Link to='/login'>Login</Link> to see your crushes</p>
+            </div>
+          </div>
+        </div>
       </React.Fragment>
     )
   }
