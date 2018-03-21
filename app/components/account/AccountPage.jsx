@@ -12,7 +12,7 @@ async function removeUser (user) {
 const AccountPage = ({ user }) => {
   function submitForm (event) {
     event.preventDefault()
-    confirm('Are you sure you want to delete this account?')
+    window.confirm('Are you sure you want to delete this account?')
     removeUser(user.id)
   }
 
