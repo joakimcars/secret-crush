@@ -4,7 +4,7 @@ import { connect } from 'react-redux'
 import Crushes from './Crushes'
 
 const CrushesPage = props => {
-  if (!props.user) {
+  if (props.user.id === undefined) {
     const containerStyle = {
       marginLeft: '25%'
     }
@@ -17,7 +17,7 @@ const CrushesPage = props => {
       <React.Fragment>
         <div className='jumbotron'>
           <div style={containerStyle}>
-            <h2>you are not logged in</h2>
+            <h2>You are not logged in</h2>
             <div style={textStyle}>
               <p><Link to='/login'>Login</Link> to see your crushes</p>
             </div>

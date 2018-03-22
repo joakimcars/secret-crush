@@ -1,6 +1,7 @@
 import React from 'react'
 import { users as api } from '../../api'
 import { connect } from 'react-redux'
+import { Link } from 'react-router-dom'
 
 async function removeUser (user) {
   const userToRemove = {
