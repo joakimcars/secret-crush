@@ -7,7 +7,7 @@ class Crushes extends Component {
     if (this.props.crushes) {
       CrushesItems = this.props.crushes.map(crush => {
         return (
-          <CrushesItem key={crush.id} id={crush.id} crush={crush} />
+          <CrushesItem key={crush.id} id={crush.id} user={this.props.user} crush={crush} />
         )
       })
     }

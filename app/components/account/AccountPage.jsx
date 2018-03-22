@@ -10,42 +10,35 @@ async function removeUser (user) {
   await api.remove(userToRemove.id)
 }
 
-const AccountPage = props => {
-  if (props.user.id === undefined) {
-    const containerStyle = {
-      marginLeft: '25%'
-    }
-    const textStyle = {
-      marginTop: '4%',
-      marginLeft: '5%',
-      fontWeight: 'bold'
-    }
-    return (
-      <React.Fragment>
-        <div className='jumbotron'>
-          <div style={containerStyle}>
-            <h2>You are not logged in</h2>
-            <div style={textStyle}>
-              <p><Link to='/login'>Login</Link> to manage your account</p>
-            </div>
-          </div>
-        </div>
-      </React.Fragment>
-    )
-  }
-  function submitForm (e) {
-    e.preventDefault()
+const AccountPage = ({ user }) => {
+  function submitForm (event) {
+    event.preventDefault()
     window.confirm('Are you sure you want to delete this account?')
-    removeUser(props.user.id)
+    removeUser(user.id)
   }
+
+  const containerStyle = {
+    marginLeft: '25%',
+    marginRight: '35%'
+  }
+  const textStyle = {
+    marginTop: '4%',
+    marginLeft: '5%',
+    fontWeight: 'bold'
+  }
+
   return (
     <React.Fragment>
-      <div>
-        <form onSubmit={submitForm}>
-          <h3>{props.user.id}</h3>
-          <p>do you wish to delete your account</p>
-          <button>yes</button>
-        </form>
+      <div className='jumbotron'>
+        <div style={containerStyle}>
+          <h3>Delete account {user.id}</h3>
+          <div style={textStyle}>
+            <form onSubmit={submitForm}>
+              <p>Do you wish to delete your account {user.id}? Note that deleting this account will result in the loss of all data connected to your user.</p>
+              <button type='submit' className='btn btn-primary'>yes</button>
+            </form>
+          </div>
+        </div>
       </div>
     </React.Fragment>
   )
