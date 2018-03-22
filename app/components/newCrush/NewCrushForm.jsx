@@ -4,7 +4,7 @@ import { Field, reduxForm } from 'redux-form'
 function validate (values) {
   const errors = {}
   if (!values.email) {
-    errors.email = 'Please fill in  the email'
+    errors.email = 'Please fill in the email'
   }
   return errors
 }

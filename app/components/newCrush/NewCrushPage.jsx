@@ -1,11 +1,14 @@
 import React from 'react'
-import { users as api } from '../../api'
 import { connect } from 'react-redux'
 import NewCrushForm from './NewCrushForm'
+import { addNewCrush } from './new-crush-actions'
 
 const NewCrush = props => {
-  function submitForm (crush) {
-    api.addCrush(props.user.id, crush)
+  function submitForm (email) {
+    return props.addNewCrush({
+      email: email,
+      userId: props.user.id
+    })
   }
 
   return (
@@ -23,4 +26,10 @@ function mapStateToProps (state) {
   }
 }
 
-export default connect(mapStateToProps)(NewCrush)
+function mapDispatchToProps (dispatch, ownProps) {
+  return {
+    addNewCrush: user => dispatch(addNewCrush(user))
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(NewCrush)

@@ -2,6 +2,7 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
 import Crushes from './Crushes'
+import { crushAdded } from '../newCrush/new-crush-actions'
 
 const CrushesPage = props => {
   if (!props.user) {
@@ -70,4 +71,10 @@ function mapStateToProps (state, action) {
   }
 }
 
-export default connect(mapStateToProps)(CrushesPage)
+function mapDispatchToProps (dispatch, ownProps) {
+  return {
+    crushAdded: user => dispatch(crushAdded(user))
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(CrushesPage)
