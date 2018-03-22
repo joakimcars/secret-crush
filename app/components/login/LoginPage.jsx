@@ -22,8 +22,10 @@ const LoginPage = props => {
 
   if (!props.user) {
     return (
-      <div style={{ display: 'flex', justifyContent: 'space-around' }}>
-        <LoginForm onSubmit={handleLogin} />
+      <div className='jumbotron'>
+        <div style={{ display: 'flex', justifyContent: 'space-around' }}>
+          <LoginForm onSubmit={handleLogin} />
+        </div>
       </div>
     )
   }

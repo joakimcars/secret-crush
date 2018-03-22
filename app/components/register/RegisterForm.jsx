@@ -30,13 +30,25 @@ const FieldInput = ({ meta, label, placeholder, input }) => {
 
 const RegisterForm = props => {
   const { handleSubmit, valid, submitting } = props
+  const containerStyle = {
+    marginLeft: '25%',
+    marginRight: '35%'
+  }
+  const textStyle = {
+    marginTop: '6%',
+    marginLeft: '7%',
+    fontWeight: 'bold'
+  }
   return (
-    <form onSubmit={handleSubmit}>
-      <div className='form-group'>
-        <Field label='Email' placeholder='name@domain.com' name='email' type='email' component={FieldInput} />
-        <button type='submit' className='btn btn-primary' disabled={!valid || submitting}>Register</button>
+    <div style={containerStyle}>
+      <h1>Register new account</h1>
+      <div style={textStyle}>
+        <form onSubmit={handleSubmit}>
+          <Field label='Email' placeholder='name@domain.com' name='email' type='email' component={FieldInput} />
+          <button type='submit' className='btn btn-primary' disabled={!valid || submitting}>Register</button>
+        </form>
       </div>
-    </form>
+    </div>
   )
 }
 
