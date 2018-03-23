@@ -14,8 +14,10 @@ const Register = props => {
     register(newUser.email)
   }
   return (
-    <div style={{ display: 'flex', justifyContent: 'space-around' }}>
-      <RegisterForm onSubmit={submitForm} />
+    <div className='jumbotron'>
+      <div style={{ display: 'flex', justifyContent: 'space-around' }}>
+        <RegisterForm onSubmit={submitForm} />
+      </div>
     </div>
   )
 }

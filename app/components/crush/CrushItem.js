@@ -1,26 +1,26 @@
-import React, { Component } from 'react'
+import React from 'react'
+import { removeCrush } from '../../api/users'
 
-class CrushItem extends Component {
-  deleteCrush (id) {
+const CrushItem = props => {
+  function deleteCrush () {
+    removeCrush(props.user.id, props.crush.id)
+  }
+  function edit (id) {
     console.log(id)
   }
-  editCrush (id) {
-    console.log(id)
-  }
 
-  render () {
-    return (
-      <tr>
-        <td>
-          {this.props.crush.id}
-        </td>
-        <td>
-          <a href='#' onClick={this.deleteCrush.bind(this, this.props.id)}>Delete</a> |
-          <a href='#' onClick={this.editCrush.bind(this, this.props.id)}> Edit</a>
-        </td>
-      </tr>
-    )
-  }
+  return (
+    <tr>
+      <td>
+        {props.crush.id}
+      </td>
+      <td>
+        <a href='#' onClick={deleteCrush}>Delete</a>
+        <span> | </span>
+        <a href='#' onClick={edit}> Edit</a>
+      </td>
+    </tr>
+  )
 }
 
 export default CrushItem
