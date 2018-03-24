@@ -2,14 +2,12 @@ import React from 'react'
 import { connect } from 'react-redux'
 import LoginForm from './LoginForm'
 import { login, logout } from './login-actions'
+import { Redirect } from 'react-router'
+import { HomePage } from '../home'
 
 const User = ({ user, onLogout }) => {
   return (
-    <React.Fragment>
-      <h1>Welcome {user.id}</h1>
-      <p>Do something!</p>
-      <button className='btn btn-primary' onClick={onLogout}>Logout</button>
-    </React.Fragment>
+    <Redirect to='/' component={HomePage} />
   )
 }
 
