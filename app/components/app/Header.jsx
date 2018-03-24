@@ -42,6 +42,7 @@ const Header = (props) => {
           {props.user && <NavLink to='/newCrush'>New Crush</NavLink>}
           {!props.user && <NavLink to='/register'>Register</NavLink>}
           {props.user && <NavLink to='/account'>Account</NavLink>}
+          {props.user && <NavLink to='/messages'>Matches</NavLink>}
           {props.user && <div onClick={props.logout}><NavLink to='/'>Logout</NavLink></div>}
         </Navbar>
       </div>

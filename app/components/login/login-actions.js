@@ -20,6 +20,7 @@ export function login ({ email }) {
     const user = await api.get(email)
     if (user) {
       dispatch(loggedIn(user))
+      this.props.history.push('/')
     }
   }
 }

@@ -9,6 +9,7 @@ import { AccountPage } from '../account'
 import { NewCrushPage } from '../newCrush'
 import { connect } from 'react-redux'
 import { logout } from '../login/login-actions'
+import { MessagePage } from '../messages'
 
 const App = ({user, logout}) => {
   return (
@@ -22,6 +23,7 @@ const App = ({user, logout}) => {
           <Route path='/login' component={LoginPage} />
           {!user && <Route path='/register' component={RegisterPage} />}
           {user && <Route path='/account' component={AccountPage} />}
+          {user && <Route path='/messages' component={MessagePage} />}
         </Switch>
       </div>
     </React.Fragment>
