@@ -22,7 +22,7 @@ const WelcomeUserLoggedIn = props => {
   return (
     <React.Fragment>
       <div>
-        <h1>Welcome <h4>{props.loggedInUser}</h4></h1>
+        <h1>Welcome</h1><h4>{props.loggedInUser}</h4>
       </div>
     </React.Fragment>
   )
