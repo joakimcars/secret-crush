@@ -9,11 +9,13 @@ export function crushAdded (user) {
 }
 
 export function addNewCrush ({ email, userId }) {
-  return async dispatch => {
-    const user = await api.addCrush(userId, email)
-    if (user) {
-      dispatch(crushAdded(user))
-      // api.emailCrush(userId, email)
+  const update = api.addCrush(userId, email)
+  if (update) {
+    return async dispatch => {
+      const user = await api.get(userId)
+      if (user) {
+        dispatch(crushAdded(user))
+      }
     }
   }
 }

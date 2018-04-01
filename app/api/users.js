@@ -46,23 +46,6 @@ export async function addCrush (userId, crush) {
   }).catch(reason => console.error(reason.message))
 }
 
-export async function emailCrush (userId, crush) {
-  const url = `/api/users/${userId}/email`
-  return fetch(url, {
-    method: 'POST',
-    body: JSON.stringify(crush),
-    headers: {
-      'Accept': 'application/json, text/plain, */*',
-      'Content-Type': 'application/json'
-    }
-  }).then(response => {
-    if (response.status >= 400) {
-      throw new Error({ status: response.status, ...response.json() })
-    }
-    return response.json()
-  }).catch(reason => console.error(reason.message))
-}
-
 export async function removeCrush (userId, crushId) {
   const url = `/api/users/${userId}/crushes/${crushId}`
   return fetch(url, { method: 'DELETE' })
@@ -74,4 +57,4 @@ export async function removeCrush (userId, crushId) {
     }).catch(reason => console.error(reason.message))
 }
 
-export default { get, put, remove, addCrush, removeCrush, emailCrush }
+export default { get, put, remove, addCrush, removeCrush }
