@@ -27,6 +27,21 @@ const Nav = ({ children }) => {
   )
 }
 
+const UserLoggedIn = props => {
+  const Style = {
+    marginRight: '5%'
+  }
+  return (
+    <React.Fragment>
+      <div style={Style}>
+        <Navbar>
+          <NavLink to='/account'>{props.loggedInUser}</NavLink>}
+        </Navbar>
+      </div>
+    </React.Fragment>
+  )
+}
+
 const Header = (props) => {
   return (
     <Nav>
@@ -45,6 +60,7 @@ const Header = (props) => {
           {props.user && <NavLink to='/messages'>Matches</NavLink>}
           {props.user && <div onClick={props.logout}><NavLink to='/'>Logout</NavLink></div>}
         </Navbar>
+        {props.user && <UserLoggedIn loggedInUser={props.user.id} />}
       </div>
     </Nav>
   )
