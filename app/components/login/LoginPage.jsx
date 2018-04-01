@@ -1,17 +1,9 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import LoginForm from './LoginForm'
-import { login, logout } from './login-actions'
-
-const User = ({ user, onLogout }) => {
-  return (
-    <React.Fragment>
-      <h1>Welcome {user.id}</h1>
-      <p>Do something!</p>
-      <button className='btn btn-primary' onClick={onLogout}>Logout</button>
-    </React.Fragment>
-  )
-}
+import { login } from './login-actions'
+import { Redirect } from 'react-router'
+import { HomePage } from '../home'
 
 const LoginPage = props => {
   function handleLogin (data) {
@@ -31,7 +23,7 @@ const LoginPage = props => {
   }
 
   return (
-    <User user={props.user} onLogout={props.logout} />
+    <Redirect to='/' component={HomePage} />
   )
 }
 
@@ -43,8 +35,7 @@ function mapStateToProps (state) {
 
 function mapDispatchToProps (dispatch, ownProps) {
   return {
-    login: info => dispatch(login(info)),
-    logout: () => dispatch(logout())
+    login: info => dispatch(login(info))
   }
 }
 
