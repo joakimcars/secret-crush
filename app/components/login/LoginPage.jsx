@@ -23,7 +23,7 @@ const LoginPage = props => {
   }
 
   return (
-    <Redirect to='/' component={HomePage} />
+    <Redirect to='/' />
   )
 }
 
