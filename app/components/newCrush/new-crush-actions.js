@@ -15,6 +15,7 @@ export function addNewCrush ({ email, userId }) {
       const user = await api.get(userId)
       if (user) {
         dispatch(crushAdded(user))
+        api.emailCrush(userId, email)
       }
     }
   }
