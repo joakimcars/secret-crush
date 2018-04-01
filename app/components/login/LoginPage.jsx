@@ -1,15 +1,9 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import LoginForm from './LoginForm'
-import { login, logout } from './login-actions'
+import { login } from './login-actions'
 import { Redirect } from 'react-router'
 import { HomePage } from '../home'
-
-const User = ({ user, onLogout }) => {
-  return (
-    <Redirect to='/' component={HomePage} />
-  )
-}
 
 const LoginPage = props => {
   function handleLogin (data) {
@@ -29,7 +23,7 @@ const LoginPage = props => {
   }
 
   return (
-    <User user={props.user} onLogout={props.logout} />
+    <Redirect to='/' component={HomePage} />
   )
 }
 
@@ -41,8 +35,7 @@ function mapStateToProps (state) {
 
 function mapDispatchToProps (dispatch, ownProps) {
   return {
-    login: info => dispatch(login(info)),
-    logout: () => dispatch(logout())
+    login: info => dispatch(login(info))
   }
 }
 
