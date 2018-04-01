@@ -1,6 +1,7 @@
 import React from 'react'
 import { Switch, Route, withRouter } from 'react-router-dom'
 import Header from './Header'
+import Footer from './Footer'
 import { HomePage } from '../home'
 import { CrushesPage } from '../crush'
 import { LoginPage } from '../login'
@@ -26,6 +27,7 @@ const App = ({user, logout}) => {
           {user && <Route path='/messages' component={MessagePage} />}
         </Switch>
       </div>
+      <Footer />
     </React.Fragment>
   )
 }
