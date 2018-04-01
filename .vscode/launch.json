@@ -8,7 +8,8 @@
       "type": "node",
       "request": "launch",
       "name": "Launch Program",
-      "program": "${workspaceFolder}\\index.js"
+      "preLaunchTask": "npm: build",
+      "program": "${workspaceFolder}/.build/server/index.js"
     }
   ]
 }
