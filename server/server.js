@@ -51,11 +51,13 @@ app.get('/api/users', async (req, res) => {
 })
 
 app.get('/api/users/:id', async (req, res) => {
-  const user = await users.get(req.params.id)
-  if (!user) {
+  try {
+    const user = await users.get(req.params.id)
+    return res.status(200).send(user)
+  } catch (error) {
+    console.error(error)
     return res.sendStatus(404)
   }
-  return res.status(200).send(user)
 })
 
 app.put('/api/users/:id', async (req, res) => {
@@ -78,6 +80,58 @@ app.delete('/api/users/:id', async (req, res) => {
   }
 })
 
+app.post('/api/users/:id/matches', async (req, res) => {
+  function uniq (a) {
+    return a.sort().filter(function (item, pos, ary) {
+      return !pos || item !== ary[pos - 1]
+    })
+  }
+  function toObject (arr) {
+    var rv = {}
+    for (var i = 0; i < arr.length; ++i) {
+      rv[arr[i]] = {}
+    }
+    return rv
+  }
+  try {
+    const list = await users.all()
+    const user = await users.get(req.params.id)
+    let userCrushes = []
+    let matches = []
+
+    for (var key in user.crushes) {
+      userCrushes.push(key)
+    }
+    for (let i = 0; i < userCrushes.length; i++) {
+      for (let j = 0; j < list.length; j++) {
+        let otherUserCrushes = []
+        for (var crush in list[j].crushes) {
+          otherUserCrushes.push(crush)
+        }
+        for (let k = 0; k < otherUserCrushes.length; k++) {
+          if (user.id === otherUserCrushes[k]) {
+            for (let l = 0; l < userCrushes.length; l++) {
+              if (userCrushes[l] === list[j].id) {
+                matches.push(list[j].id)
+              }
+            }
+          }
+        }
+      }
+    }
+
+    let updatedMatches = uniq(matches)
+    let updatedMatchesObject = toObject(updatedMatches)
+    console.log(updatedMatchesObject)
+    console.log(user.crushes)
+
+    return res.status(200).send(updatedMatchesObject)
+  } catch (error) {
+    console.error(error)
+    return res.status(500).send({ error: error.message })
+  }
+})
+
 app.post('/api/users/:id/crushes', async (req, res) => {
   try {
     const user = await users.get(req.params.id)
@@ -85,7 +139,6 @@ app.post('/api/users/:id/crushes', async (req, res) => {
     if (!email) {
       return res.status(400).send({ error: 'No email specified for crush' })
     }
-
     const updated = await users.put({ ...user, crushes: { ...user.crushes, [email]: crush } })
     return res.status(200).send(updated)
   } catch (error) {

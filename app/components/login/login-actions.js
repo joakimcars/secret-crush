@@ -18,8 +18,18 @@ export function noSuchUser (email) {
 export function login ({ email }) {
   return async dispatch => {
     const user = await api.get(email)
+    const matches = await api.checkMatch(email)
+    var completeUser = {
+      id: user.id,
+      crushes: user.crushes,
+      matches: matches
+    }
+    if (user === 'not found') {
+      let message = 'Could not find user ' + email + '. Please try again.'
+      window.alert(message)
+    }
     if (user) {
-      dispatch(loggedIn(user))
+      dispatch(loggedIn(completeUser))
     }
   }
 }

@@ -12,6 +12,8 @@ function user (state = undefined, action) {
       return action.user
     case types.NEW_CRUSH:
       return action.user
+    case types.NEW_MATCH:
+      return action.user
     case types.USER_LOGGED_OUT:
       return undefined
     default:

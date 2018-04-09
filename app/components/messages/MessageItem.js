@@ -7,11 +7,14 @@ const MessageItem = props => {
   function messageMatch () {
     console.log('message match')
   }
+  const matchStyle = {
+    fontWeight: 'bold'
+  }
 
   return (
     <tr>
       <td>
-        Congratulations! You have a match with {props.match.id}
+        Congratulations! You have a match with <span style={matchStyle}> {props.match} </span>
       </td>
       <td>
         <a href='#' onClick={messageMatch}>Message</a>

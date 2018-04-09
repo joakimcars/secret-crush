@@ -12,11 +12,14 @@ import { connect } from 'react-redux'
 import { logout } from '../login/login-actions'
 import { MessagePage } from '../messages'
 
-const App = ({user, logout}) => {
+const App = ({ user, logout }) => {
+  const style = {
+    padding: '10px'
+  }
   return (
     <React.Fragment>
       <Header />
-      <div style={{ padding: '10px' }}>
+      <div style={style}>
         <Switch>
           <Route exact path='/' component={HomePage} />
           <Route path='/crushes' component={CrushesPage} />
