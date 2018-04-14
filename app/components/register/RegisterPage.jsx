@@ -1,15 +1,9 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import RegisterForm from './RegisterForm'
-import { register, logout } from './register-action'
+import { register } from './register-action'
 import { Redirect } from 'react-router'
 import { HomePage } from '../home'
-
-const User = ({ user, onLogout }) => {
-  return (
-    <Redirect to='/' component={HomePage} />
-  )
-}
 
 const Register = props => {
   function submitForm (data) {
@@ -30,7 +24,7 @@ const Register = props => {
   }
 
   return (
-    <User user={props.user} onLogout={props.logout} />
+    <Redirect to='/' component={HomePage} />
   )
 }
 
@@ -42,8 +36,7 @@ function mapStateToProps (state) {
 
 function mapDispatchToProps (dispatch, ownProps) {
   return {
-    register: info => dispatch(register(info)),
-    logout: () => dispatch(logout())
+    register: info => dispatch(register(info))
   }
 }
 
