@@ -14,7 +14,8 @@ const User = ({ user, onLogout }) => {
 const LoginPage = props => {
   function handleLogin (data) {
     return props.login({
-      email: data.email
+      email: data.email,
+      password: data.password
     })
   }
 

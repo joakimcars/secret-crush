@@ -1,25 +1,50 @@
 import React from 'react'
-import { users as api } from '../../api'
+import { connect } from 'react-redux'
 import RegisterForm from './RegisterForm'
+import { register, logout } from './register-action'
+import { Redirect } from 'react-router'
+import { HomePage } from '../home'
 
-async function register (email) {
-  const newUser = {
-    id: email
-  }
-  await api.put(newUser)
-}
-
-const Register = props => {
-  function submitForm (newUser) {
-    register(newUser.email)
-  }
+const User = ({ user, onLogout }) => {
   return (
-    <div className='jumbotron'>
-      <div style={{ display: 'flex', justifyContent: 'space-around' }}>
-        <RegisterForm onSubmit={submitForm} />
-      </div>
-    </div>
+    <Redirect to='/' component={HomePage} />
   )
 }
 
-export default Register
+const Register = props => {
+  function submitForm (data) {
+    return props.register({
+      email: data.email,
+      password: data.password
+    })
+  }
+
+  if (!props.user) {
+    return (
+      <div className='jumbotron'>
+        <div style={{ display: 'flex', justifyContent: 'space-around' }}>
+          <RegisterForm onSubmit={submitForm} />
+        </div>
+      </div>
+    )
+  }
+
+  return (
+    <User user={props.user} onLogout={props.logout} />
+  )
+}
+
+function mapStateToProps (state) {
+  return {
+    user: state.user
+  }
+}
+
+function mapDispatchToProps (dispatch, ownProps) {
+  return {
+    register: info => dispatch(register(info)),
+    logout: () => dispatch(logout())
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Register)

@@ -69,7 +69,8 @@ const Header = (props) => {
           {props.user && <NavLink to='/newCrush'>New Crush</NavLink>}
           {!props.user && <NavLink to='/register'>Register</NavLink>}
           {props.user && <NavLink to='/account'>Account</NavLink>}
-          {props.user && <NavLink to='/messages'>Matches<span style={nrStyle}>{userMatches.length}</span></NavLink> }
+          {props.user && userMatches.length > 0 && <NavLink to='/messages'>Matches<span style={nrStyle}>{userMatches.length}</span></NavLink>}
+          {props.user && userMatches.length < 1 && <NavLink to='/messages'>Matches</NavLink>}
           {props.user && <div onClick={props.logout}><NavLink to='/'>Logout</NavLink></div>}
         </Navbar>
         {props.user && <UserLoggedIn loggedInUser={props.user.id} />}

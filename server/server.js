@@ -50,19 +50,22 @@ app.get('/api/users', async (req, res) => {
   return res.status(200).send(list)
 })
 
-app.get('/api/users/:id', async (req, res) => {
+app.get('/api/users/:id/:password', async (req, res) => {
   try {
     const user = await users.get(req.params.id)
-    return res.status(200).send(user)
+    if (user.password === req.params.password) {
+      return res.status(200).send(user)
+    }
+    return res.sendStatus(404)
   } catch (error) {
     console.error(error)
     return res.sendStatus(404)
   }
 })
 
-app.put('/api/users/:id', async (req, res) => {
+app.put('/api/users/:id/:password', async (req, res) => {
   try {
-    const user = await users.put({ id: req.params.id })
+    const user = await users.put({ id: req.params.id, password: req.params.password })
     return res.status(200).send(user)
   } catch (error) {
     console.error(error)
@@ -122,8 +125,6 @@ app.post('/api/users/:id/matches', async (req, res) => {
 
     let updatedMatches = uniq(matches)
     let updatedMatchesObject = toObject(updatedMatches)
-    console.log(updatedMatchesObject)
-    console.log(user.crushes)
 
     return res.status(200).send(updatedMatchesObject)
   } catch (error) {

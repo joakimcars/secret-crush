@@ -6,6 +6,9 @@ function validate (values) {
   if (!values.email) {
     errors.email = 'Please fill in your email'
   }
+  if (!values.password) {
+    errors.password = 'Please fill in your password'
+  }
   return errors
 }
 
@@ -45,6 +48,7 @@ const LoginForm = props => {
       <div style={textStyle}>
         <form onSubmit={handleSubmit}>
           <Field label='Email' placeholder='name@domain.com' name='email' type='email' component={FieldInput} />
+          <Field label='Password' placeholder='enter password' name='password' type='password' component={FieldInput} />
           <button type='submit' className='btn btn-primary' disabled={!valid || submitting}>Log in</button>
         </form>
       </div>

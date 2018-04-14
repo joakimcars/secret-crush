@@ -10,6 +10,8 @@ function user (state = undefined, action) {
   switch (action.type) {
     case types.USER_LOGGED_IN:
       return action.user
+    case types.NEW_USER:
+      return action.user
     case types.NEW_CRUSH:
       return action.user
     case types.NEW_MATCH:

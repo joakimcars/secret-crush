@@ -1,7 +1,7 @@
 import fetch from 'node-fetch'
 
-export async function get (id) {
-  return fetch('/api/users/' + id).then(response => {
+export async function get (id, password) {
+  return fetch('/api/users/' + id + '/' + password).then(response => {
     if (response.status === 404) {
       return 'not found'
     }
@@ -10,7 +10,7 @@ export async function get (id) {
 }
 
 export async function put (user) {
-  const url = '/api/users/' + user.id
+  const url = '/api/users/' + user.id + '/' + user.password
   return fetch(url, { method: 'PUT' })
     .then(r => {
       if (r.status < 400) {
