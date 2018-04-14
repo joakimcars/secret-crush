@@ -7,7 +7,7 @@ class Messages extends Component {
     if (this.props.matches) {
       MessageItems = this.props.matches.map(match => {
         return (
-          <MessageItem key={match.id} id={match.id} user={this.props.user} match={match.id} />
+          <MessageItem key={match.id} id={match.id} user={this.props.user} match={match} />
         )
       })
     }
